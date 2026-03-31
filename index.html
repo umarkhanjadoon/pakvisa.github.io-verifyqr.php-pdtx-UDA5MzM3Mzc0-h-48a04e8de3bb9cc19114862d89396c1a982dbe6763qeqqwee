@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAK VISA</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 14px/24px "Poppins", sans-serif !important;
+            background-color: #fff;
+            margin: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 150px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #fff;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .header-logo img {
+            height: 50px;
+        }
+
+        .header-logo .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .header-logo .logo-text .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .header-logo .logo-text .subtitle {
+            font-size: 9px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header nav a:hover {
+            color: #337ab7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #337ab7;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .page-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 72px - 45px);
+            padding: 100px;
+        }
+
+        .footer {
+            background-color: #3d5c75;
+            color: #a8d8ea;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .card {
+            background: #f5f5f5;
+            max-width: 700px;
+            width: 100%;
+            padding: 0px 40px 25px;
+        }
+
+        .top-line {
+            width: 60px;
+            height: 4px;
+            background-color: #337ab7;
+            margin-bottom: 20px;
+        }
+
+        .visa-title {
+            text-align: center;
+            color: #337ab7;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .divider {
+            border: none;
+            border-top: 2px solid #bbb9b9;
+            margin-bottom: 25px;
+        }
+
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .photo {
+            width: 150px;
+            height: 180px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .detail-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .detail-row .label {
+            font-weight: 600;
+            color: #555;
+            min-width: 140px;
+        }
+
+        .detail-row .value {
+            color: #333;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 40px;
+            margin-bottom: 25px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .info-item .label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .info-item .value {
+            color: #333;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px 28px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background-color: #155a83;
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+            .header {
+                padding: 10px 30px;
+            }
+
+            .page-content {
+                padding: 64px 40px;
+            }
+
+            .card {
+                text-align: center;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .details {
+                align-items: center;
+                text-align: center;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+            }
+
+            .detail-row .label {
+                min-width: unset;
+            }
+
+            .info-grid {
+                text-align: center;
+            }
+
+            .info-item {
+                text-align: center;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .header {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 10px 15px;
+            }
+
+            .header-logo img {
+                height: 40px;
+            }
+
+            .header nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                border-top: 1px solid #e0e0e0;
+                padding-top: 10px;
+            }
+
+            .header nav.open {
+                display: flex;
+            }
+
+            .header nav a {
+                font-size: 13px;
+                padding: 8px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .page-content {
+                padding: 64px 40px;
+            }
+
+            .card {
+                padding: 0px 15px 20px;
+            }
+
+            .visa-title {
+                font-size: 16px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .photo {
+                width: 120px;
+                height: 150px;
+            }
+
+            .details {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 2px;
+            }
+
+            .detail-row .label {
+                min-width: unset;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .info-item {
+                text-align: center;
+            }
+
+            .footer {
+                font-size: 12px;
+                color: #fff;
+                padding: 10px 15px;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <!-- Replace src with your logo -->
+            <img src="pak_visa_logo.png" alt="Pak Visa Logo">
+        </div>
+        <button class="hamburger" onclick="document.querySelector('.header nav').classList.toggle('open')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <a href="https://visa.nadra.gov.pk/e-visa/welcome">HOME</a>
+            <a href="https://visa.nadra.gov.pk/how-to-apply/">GUIDELINES</a>
+            <a href="https://visa.nadra.gov.pk/download/">DOWNLOADS</a>
+            <a href="https://visa.nadra.gov.pk/faqs/">FAQ</a>
+            <a href="https://visa.nadra.gov.pk/contact/">CONTACT US</a>
+        </nav>
+    </header>
+
+    <div class="page-content">
+    <div class="card">
+        <div class="top-line"></div>
+        <h1 class="visa-title">Visa Reference Number &ndash; 88001815623</h1>
+        <hr class="divider">
+
+        <div class="profile-section">
+            <!-- Replace src with your actual photo path -->
+            <img class="photo" src="/dp_ishaq.jpeg" alt="Applicant Photo">
+            <div class="details">
+                <div class="detail-row">
+                    <span class="label">NAME</span>
+                    <span class="value">Muhammad Ishaq</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Passport No</span>
+                    <span class="value">P07542952</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Passport Country</span>
+                    <span class="value">Afghan</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Visa Category</span>
+                    <span class="value">Tourist/Visit</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="label">Visa Sub Category</div>
+                <div class="value">Individual</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Application Type</div>
+                <div class="value">Entry</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Staying Facility</div>
+                <div class="value">Multiple Entry &ndash; Upto 1 Year</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Visa Start Date</div>
+                <div class="value">11 Mar 2026</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Visa End Date</div>
+                <div class="value">15 Apr 2023</div>
+            </div>
+            <div class="info-item">
+                <div class="label">Visa Duration</div>
+                <div class="value">60 day(s)</div>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <a href="https://visa.nadra.gov.pk/e-visa/authenticate" class="btn-back">Back to Login</a>
+        </div>
+    </div>
+    </div>
+
+    <footer class="footer">
+        COPYRIGHT &copy; 2015 - 2025 NATIONAL DATABASE &amp; REGISTRATION AUTHORITY - ALL RIGHTS RESERVED
+    </footer>
+</body>
+</html>
