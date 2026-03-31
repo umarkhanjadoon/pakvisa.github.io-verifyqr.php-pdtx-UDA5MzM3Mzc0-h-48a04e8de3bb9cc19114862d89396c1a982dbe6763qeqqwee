@@ -1,0 +1,1 @@
+# pakvisa.github.io-verifyqr.php-pdtx-UDA5MzM3Mzc0-h-48a04e8de3bb9cc19114862d89396c1a982dbe6763qeqqwee
